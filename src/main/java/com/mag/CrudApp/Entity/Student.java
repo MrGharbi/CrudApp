@@ -1,24 +1,26 @@
 package com.mag.CrudApp.Entity;
 
-import org.springframework.data.annotation.Id;
-
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name= "testmag")
 public class Student {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID user_id;
-    private String firstName;
-    private String lastName;
+    private String firstname;
+    private String lastname;
     private  String email;
 
     public Student() {
     }
 
-    public Student(UUID user_id, String firstName, String lastName, String email) {
+    public Student(UUID user_id, String firstname, String lastname, String email) {
         this.user_id = user_id;
-        this.firstName = firstName;
-        this.lastName = lastName;
+        this.firstname = firstname;
+        this.lastname = lastname;
         this.email = email;
     }
 
@@ -30,20 +32,20 @@ public class Student {
         this.user_id = user_id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
     public String getEmail() {
@@ -58,8 +60,8 @@ public class Student {
     public String toString() {
         return "User{" +
                 "user_id=" + user_id +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                ", firstName='" + firstname + '\'' +
+                ", lastName='" + lastname + '\'' +
                 ", email='" + email + '\'' +
                 '}';
     }

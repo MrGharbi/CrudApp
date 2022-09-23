@@ -15,14 +15,21 @@ public class StudentController {
     @Autowired
     StudentRepository studentRepository;
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @GetMapping("/student")
     public List<Student> getAll(){
         return studentRepository.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:3000")
     @PostMapping("/student")
     public Student addStudent(@RequestBody Student student){
         studentRepository.save(student);
         return student;
+    }
+
+    @GetMapping("student/{firstName}")
+    public List<Student> getStudent(@RequestParam String firstName){
+        return studentRepository.findByFirstname(firstName);
     }
 }
